@@ -15,12 +15,14 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        //넘겨온 데이터들을 받음
         val height = intent.getIntExtra("height", 0)
         val weight = intent.getIntExtra("weight", 0)
 
         var value = weight / (height/100.0).pow(2.0)
         value = round(value *100)/100
 
+        //데이터들이 계속 바뀌니까 var로 선언
         var resultText = ""
         var resImage = 0
         var resColor = 0
@@ -51,6 +53,7 @@ class ResultActivity : AppCompatActivity() {
             resColor = Color.RED
         }
 
+        //
         val tv_resvalue = findViewById<TextView>(R.id.tv_resvalue)
         val tv_restext = findViewById<TextView>(R.id.tv_restext)
         val iv_image = findViewById<ImageView>(R.id.iv_image)
@@ -61,6 +64,7 @@ class ResultActivity : AppCompatActivity() {
         iv_image.setImageResource(resImage)
         tv_restext.setTextColor(resColor)
 
+        //돌아가기 버튼 클릭시 초기화
         btn_back.setOnClickListener{
             finish()
         }
